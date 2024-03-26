@@ -1,6 +1,7 @@
 function Products() {
     return(
         <>
+          <p>Teste</p>
         </>
     )
 }
