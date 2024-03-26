@@ -1,3 +1,5 @@
+import '../pages/Login.css';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
 function Login() {
@@ -5,6 +7,8 @@ function Login() {
   const [formValid, setFormValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+  const redirect = useNavigate();
+
 
   const onEmailChange = (e) => {
     let email = e.target.value;
@@ -21,21 +25,30 @@ function Login() {
     setFormValid(emailValid && passwordValid)
   }, [emailValid,passwordValid]);
 
+  function showProducts() {
+    redirect('/products');
+  }
+
   return (
     <>
-      <div>
-        <h2>Login</h2>
-        <form>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" onChange={onEmailChange}/>
-          </div>
-          <div>
-            <label htmlFor="senha">Senha:</label>
-            <input type="password" id="senha" onChange={onPasswordChange}/>
-          </div>
-          <button type="submit" disabled={!formValid}>Entrar</button>
-        </form>
+      <div className='container'>
+        <div className="logo">
+          <p>Logo</p>
+        </div>
+        <div className="login">
+          <h2>Login</h2>
+          <form>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" onChange={onEmailChange}/>
+            </div>
+            <div>
+              <label htmlFor="senha">Senha:</label>
+              <input type="password" id="senha" onChange={onPasswordChange}/>
+            </div>
+            <button type="submit" onClick={showProducts} disabled={!formValid}>Entrar</button>
+          </form>
+        </div>
       </div>
     </>
   )
