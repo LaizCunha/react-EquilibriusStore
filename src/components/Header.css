@@ -1,0 +1,30 @@
+.navbar {
+    color: #fff;
+    padding: 10px 0;
+
+  }
+  
+  .container {
+    display: flex;
+    align-items: self-end;
+    width: 80px;
+  }
+  
+  .logo {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    height: auto;
+  }
+     
+  .nav-links a {
+    font-size: 18px;
+    color: #545050;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-left: 20px;
+  }
+  
+  .nav-links a:hover {
+    color: #ff3700;
+  }
