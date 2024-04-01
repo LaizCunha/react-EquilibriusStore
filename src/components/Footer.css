@@ -1,8 +1,21 @@
 .footer {
-    margin-top: 20px;
     display: flex;
-    align-items: self-end;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
+    margin-top: auto;    
+    height: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    color: rgb(25, 24, 24);
+    padding: 30px;
 }
+
+@media screen and (max-width: 600px) {
+    .footer {
+        font-size: 11px;
+    }
+  
+  }
