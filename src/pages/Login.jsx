@@ -1,6 +1,8 @@
 import '../pages/Login.css';
+import banner from "../assets/banner.png"
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import Footer from "../components/Footer"
 
 function Login() {
 
@@ -31,25 +33,26 @@ function Login() {
 
   return (
     <>
-      <div className='container'>
+      <div className='container-login'>
         <div className="logo">
-          <p>Logo</p>
+          <img id='banner' src={banner} alt="logo equilibrius" />
         </div>
         <div className="login">
           <h2>Login</h2>
           <form>
-            <div>
-              <label htmlFor="email">Email:</label>
+            <div className="form-group">
+              <label htmlFor="email">Email: </label>
               <input type="email" id="email" onChange={onEmailChange}/>
             </div>
-            <div>
-              <label htmlFor="senha">Senha:</label>
+            <div className="form-group">
+              <label htmlFor="senha">Senha: </label>
               <input type="password" id="senha" onChange={onPasswordChange}/>
             </div>
             <button type="submit" onClick={showProducts} disabled={!formValid}>Entrar</button>
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </>
   )
 }
