@@ -1,0 +1,22 @@
+.container-bigcard{
+    display: grid;
+    grid-template-columns: 3fr 1.5fr;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container-bigcard-info{
+    padding: 20px;
+}
+
+.container-bigcard-cart{
+    background-color: #f9f6f6;
+    padding: 20px;
+}
+
+.container-bigcard-info img{
+    width: 50%;
+    max-height: 300px;
+    border-radius: 5px;
+}
