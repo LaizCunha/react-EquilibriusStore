@@ -1,0 +1,28 @@
+.container-cart.checkout {
+    width: 100%;
+    height: 200px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .container-cart.checkout .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  
+  .container-cart.checkout .cart-item .img-thumbnail {
+    width: 80px;
+    margin-right: 10px;
+  }
+
+  .container-cart.checkout .cart-item .chg-quantiity {
+    justify-self: flex-end;
+  }
+
+  .container-cart.checkout .cart-item .item-price {
+    margin-right: 10px;
+  }

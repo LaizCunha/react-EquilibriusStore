@@ -1,30 +1,35 @@
 import PropTypes from 'prop-types';
 import "./Cart.css";
+import { Link } from 'react-router-dom';
 
 function Cart(props) {
 
+  const { isCheckout } = props;
   const itensCarrinho = props.itensCarrinho;
   const setItensCarrinho = props.setItensCarrinho;
 
   Cart.propTypes = {
     itensCarrinho: PropTypes.array.isRequired,
+    isCheckout: PropTypes.bool,
     setItensCarrinho: PropTypes.func.isRequired
   };
 
   
   function onClickAdd(productId) {
-    const itensCarrinhoCopy = itensCarrinho.slice(); // cria uma cópia do array
+    const itensCarrinhoCopy = [...itensCarrinho];
     const itemCarrinho = itensCarrinhoCopy.find(ic => ic.product.id === productId);
     itemCarrinho.quantity++;
     setItensCarrinho(itensCarrinhoCopy);
+    localStorage.setItem('itensCarrinho', JSON.stringify(itensCarrinhoCopy));
   }
 
   function onClickSub(productId) {
-    const itensCarrinhoCopy = itensCarrinho.slice(); // cria uma cópia do array
+    const itensCarrinhoCopy = [...itensCarrinho];
     const itemCarrinho = itensCarrinhoCopy.find(ic => ic.product.id === productId);
     if (itemCarrinho.quantity > 0) {
       itemCarrinho.quantity--;
       setItensCarrinho(itensCarrinhoCopy);
+      localStorage.setItem('itensCarrinho', JSON.stringify(itensCarrinhoCopy));
     }
   }
 
@@ -38,26 +43,50 @@ function Cart(props) {
 
   return (
     <>
-      <div className="container-cart">
-        {
-          itensCarrinho.length > 0 ?
-          itensCarrinho.map(ic => 
-            <div className="cart-item" key={ic.product.id}>
-              <img src={ic.product.image} className='img-thumbnail' />
-              <b>{ic.product.title}</b>
+      <div className={`container-cart ${isCheckout ? 'checkout' : 'products'}`}>
+        <div className="container-cart">
+          {itensCarrinho.length > 0 ?
+            itensCarrinho.map(ic => 
+              <div className="cart-item" key={ic.product.id}>
+                <img src={ic.product.image} className='img-thumbnail' />
+                <b>{ic.product.title}</b>
 
-              <div className="chg-quantiity">
-                <button className="decrementar" onClick={() => { onClickSub(ic.product.id); }}>-</button>
-                <span className="spn-quantity">{ ic.quantity }</span>
-                <button className="incrementar" onClick={() => { onClickAdd(ic.product.id); }}>+</button>
+                <div className="chg-quantiity">
+                  <button className="decrementar" onClick={() => { onClickSub(ic.product.id); }}>-</button>
+                  <span className="spn-quantity">{ ic.quantity }</span>
+                  <button className="incrementar" onClick={() => { onClickAdd(ic.product.id); }}>+</button>
+                </div>
+
+                {isCheckout ? 
+                  (<>
+                    <div>
+                      <span className='item-price'>$ {ic.product.price} * </span>
+                      <span className='item-price'>{ic.quantity}  =</span>
+                      <span><b>${ic.product.price * ic.quantity}</b></span>
+                    </div>
+                  </>
+                  ) : (
+                  <></>
+                  )}
+
               </div>
-            </div>
-          ) :
-          <div>Nenhum item no seu carrinho... &#128577;</div>
-        }
-        
-        <hr />
-        <p><b>Preço Total:</b> $ {sumTotalPrice().toFixed(2)}</p>
+              ) :
+            <div>Nenhum item no seu carrinho... &#128577;</div>
+          }
+          
+          <hr />
+          <p><b>Preço Total: $ {sumTotalPrice().toFixed(2)}</b></p>
+          {isCheckout ? (
+            <>
+              <Link to='/products'>Continuar comprando</Link>
+              <br />
+              <br />
+              <Link to='/'>Finalizar Compras</Link>
+            </>
+          ) : (
+            <Link to="/checkout">Ver Carrinho</Link>
+          ) }   
+        </div>
       </div>
     </>
   )

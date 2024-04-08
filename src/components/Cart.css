@@ -1,17 +1,17 @@
-.container-cart {
+.container-cart.products {
     display: inline-block;
     border: 1px solid lightgray;
     border-radius: 10px;
     padding: 10px 20px;
-}
-
-.cart-item {
+  }
+  
+  .container-cart.products .cart-item {
     display: flex;
     align-items: center;
     flex-direction: row;
-}
-
-.cart-item .img-thumbnail {
+  }
+  
+  .container-cart.products .cart-item .img-thumbnail {
     width: 30px;
     margin-right: 8px;
-}
+  }
