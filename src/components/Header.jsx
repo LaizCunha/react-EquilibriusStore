@@ -6,10 +6,10 @@ function Header() {
     return (
       <>
         <nav className="navbar">
-          <ul className="list">
-            <li className="item">
+          <div className="icon">
               <Link to="/"><img src={icon} alt="Logo" /></Link>
-            </li>
+            </div>
+          <ul className="list">
             <li className="item">
               <Link to="/">Home</Link>
             </li>

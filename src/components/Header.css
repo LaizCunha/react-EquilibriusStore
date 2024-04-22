@@ -1,26 +1,44 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 .navbar  {
+  position: fixed; 
+  padding: .5em;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
   display: flex;
   justify-content: space-between;
-  padding: 1em;
-  width: 100%;
+  align-items: center;
+  background-color: #222;
 }
 
 .list {
   display: flex;
   list-style: none;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .item {
-  margin-right: 1em;
+  margin-right: 3em;
 }
 
 .item a {
-  color: #000000;
+  color: #FFF;
   text-decoration: none;
-  margin-left: auto;
+  font-family: Arial, sans-serif;
+  size: 16px;
 }
 
 .item a:hover{
   color: #bf2912;
+}
+
+.icon {
+  margin-right: auto;
+  margin-left: 2em;
 }
