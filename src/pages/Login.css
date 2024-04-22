@@ -1,22 +1,49 @@
 body, html {
     height: 100%;
     margin: 0;
-
   }
   
   .container-login {
-    display: flex; 
-    flex-direction: row; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    height: 100%;
+  }
+
+  .login {
+    margin-top: 200px;
   }
  
   .logo, .login {
-    flex: 1; 
     padding: 20px;
   }
 
   .form-group {
     margin-bottom: 20px;
+  }
+
+  .logo img {
+    margin-top: 50px;
+    max-width: 800px; 
+    width: 100%; 
+    height: auto; 
+}
+
+  .btn-login:disabled{
+    border-radius: 0;
+    background-color: #767676;
+    color: #FFF;
+  }
+
+  .btn-login{
+    border-radius: 0;
+    background-color: #222;
+    color: #FFF;
+  }
+
+  .btn-login:hover {
+    background-color: #bf2912;
   }
 
   @media screen and (max-width: 600px) {

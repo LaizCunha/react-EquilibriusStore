@@ -48,7 +48,7 @@ function Login() {
               <label htmlFor="senha">Senha: </label>
               <input type="password" id="senha" onChange={onPasswordChange}/>
             </div>
-            <button type="submit" onClick={showProducts} disabled={!formValid}>Entrar</button>
+            <button className='btn-login' type="submit" onClick={showProducts} disabled={!formValid}>Entrar</button>
           </form>
         </div>
       </div>
