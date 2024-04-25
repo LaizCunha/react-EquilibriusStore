@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import "./Cart.css";
 import { Link } from 'react-router-dom';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 function Cart(props) {
 
@@ -26,11 +27,12 @@ function Cart(props) {
   function onClickSub(productId) {
     const itensCarrinhoCopy = [...itensCarrinho];
     const itemCarrinho = itensCarrinhoCopy.find(ic => ic.product.id === productId);
-    if (itemCarrinho.quantity > 0) {
-      itemCarrinho.quantity--;
+    
+      if (itemCarrinho && itemCarrinho.quantity > 1) {
+        itemCarrinho.quantity--;
+      }
       setItensCarrinho(itensCarrinhoCopy);
       localStorage.setItem('itensCarrinho', JSON.stringify(itensCarrinhoCopy));
-    }
   }
 
   function sumTotalPrice() {
@@ -41,25 +43,36 @@ function Cart(props) {
     return totalPrice;
   }
 
+  const remove = (productId) => {
+    const itensCarrinhoCopy = itensCarrinho.filter(ic => ic.product.id !== productId);
+    setItensCarrinho(itensCarrinhoCopy);
+    localStorage.setItem('itensCarrinho', JSON.stringify(itensCarrinhoCopy));
+  }
+
   return (
     <>
       <div className={`container-cart ${isCheckout ? 'checkout' : 'products'}`}>
         <div className="container-cart">
           {itensCarrinho.length > 0 ?
             itensCarrinho.map(ic => 
-              <div className="cart-item" key={ic.product.id}>
-                <img src={ic.product.image} className='img-thumbnail' />
-                <b>{ic.product.title}</b>
-
-                <div className="chg-quantiity">
-                  <button className="decrementar" onClick={() => { onClickSub(ic.product.id); }}>-</button>
-                  <span className="spn-quantity">{ ic.quantity }</span>
-                  <button className="incrementar" onClick={() => { onClickAdd(ic.product.id); }}>+</button>
-                </div>
+              <div key={ic.product.id}>
+                <div className="cart-item">
+                  <img src={ic.product.image} className='img-thumbnail' />
+                  <b>{ic.product.title}</b>
+                  <div className="chg-quantiity">
+                    <button className="decrementar" onClick={() => { onClickSub(ic.product.id); }}>-</button>
+                    <span className="spn-quantity">{ ic.quantity }</span>
+                    <button className="incrementar" onClick={() => { onClickAdd(ic.product.id); }}>+</button>
+                  </div>
+                  <div className='trash'>
+                    <button onClick={() => remove(ic.product.id)} key={ic.product.id}>
+                      <BsFillTrashFill/>
+                    </button>
+                  </div>
 
                 {isCheckout ? 
                   (<>
-                    <div>
+                    <div className='container-cart-price'>
                       <span className='item-price'>$ {ic.product.price} * </span>
                       <span className='item-price'>{ic.quantity}  =</span>
                       <span><b>${ic.product.price * ic.quantity}</b></span>
@@ -68,8 +81,9 @@ function Cart(props) {
                   ) : (
                   <></>
                   )}
-
+                </div>
               </div>
+
               ) :
             <div>Nenhum item no seu carrinho... &#128577;</div>
           }

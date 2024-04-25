@@ -1,16 +1,34 @@
 .container-cart.products {
+    margin-top: 10px;
     display: inline-block;
     border: 1px solid lightgray;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    width: 70%;
   }
   
   .container-cart.products .cart-item {
     display: flex;
     align-items: center;
     flex-direction: row;
+    margin-bottom: 10px;
   }
-  
+
+  .container-cart.products b {
+    width: 70%;
+    text-align: start;
+    margin-left: 20px;
+  }
+
+  .trash {
+    margin-left: 25px;
+  }
+
+ button:hover {
+    background-color: #9b9a9a;
+    border: none;
+  }
+
   .container-cart.products .cart-item .img-thumbnail {
     width: 30px;
     margin-right: 8px;
