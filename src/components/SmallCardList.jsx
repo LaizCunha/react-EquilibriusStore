@@ -37,21 +37,6 @@ function SmallCardList(props) {
     setProducts(filteredProducts);
   }
 
-  function onChangeQuantity(product, newQuantity) {
-    const itensCarrinhoCopy = [...itensCarrinho];
-    const itemCarrinho = itensCarrinhoCopy.find(ic => ic.product.id === product.id);
-    if (itemCarrinho) {
-      itemCarrinho.quantity = newQuantity;
-    } else {
-      itensCarrinhoCopy.push({
-        product: product,
-        quantity: newQuantity
-      });
-    }
-    setItensCarrinho(itensCarrinhoCopy);
-  }
-
-
   return (
     <>
       <div className="find-products">
@@ -60,10 +45,9 @@ function SmallCardList(props) {
       </div>
       <div className="container-smallcard-list">
         { products.map(product => (
-          <SmallCard 
+          <SmallCard itensCarrinho={itensCarrinho}  setItensCarrinho={setItensCarrinho}
             key={product.id}
             product={product}
-            onChangeQuantity={(newQuantity) => { onChangeQuantity(product, newQuantity); }}
           ></SmallCard>
         ))}
       </div>

@@ -25,43 +25,35 @@ body {
 }
 
 .product img {
+    min-height: 300px;
+    max-height: 400px;
     width: 100%;
-    max-height: 200px;
-    object-fit: cover;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .product h3 {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .product p {
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-.product button {
-    margin-top: 10px;
+.add-cart {
+    margin-top: auto;
     padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
+    color: #000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.product button:hover {
-    background-color: #0056b3;
-}
-
-#btn-products {
-    background-color: white;
-    color: black;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-}
+  }
+  
+  .add-cart:hover {
+    background-color: #9b9a9a;
+  }
 
 @media screen and (max-width: 600px) {
     .find-products {

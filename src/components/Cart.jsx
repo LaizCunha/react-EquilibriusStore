@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import "./Cart.css";
 import { Link } from 'react-router-dom';
 import { BsFillTrashFill } from 'react-icons/bs';
+
+import "./Cart.css";
 
 function Cart(props) {
 
