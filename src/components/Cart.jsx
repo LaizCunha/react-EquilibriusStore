@@ -96,7 +96,7 @@ function Cart(props) {
               <Link to='/products'>Continuar comprando</Link>
               <br />
               <br />
-              <Link to='/'>Finalizar Compras</Link>
+              <Link to="/finish">Finalizar Compras</Link>
             </>
           ) : (
             <Link to="/checkout">Ver Carrinho</Link>
